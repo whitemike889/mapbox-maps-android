@@ -60,6 +60,17 @@ class LocationComponentActivity : AppCompatActivity() {
         }
       }
     }
+
+    val runnable = object : Runnable {
+      override fun run() {
+        binding.mapView.location.pulsingEnabled = binding.mapView.location.pulsingEnabled.not()
+        println("Change pulsing enabled : ${binding.mapView.location.pulsingEnabled}")
+
+        binding.mapView.postDelayed(this, 700L)
+      }
+    }
+
+    binding.mapView.post(runnable)
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
