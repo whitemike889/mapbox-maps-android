@@ -19,7 +19,9 @@ internal class LocationIndicatorLayerWrapper(layerId: String) : LocationLayerWra
     return Value(transition)
   }
 
-  fun bearing(bearing: Double) = updateProperty("bearing", Value(bearing))
+  fun bearing(bearing: Double) = updateProperty("bearing", Value(bearing)).also {
+    println("Set bearing property $bearing")
+  }
 
   fun location(location: List<Double>) = updateProperty("location", Value(location.map { Value(it) }))
 
